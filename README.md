@@ -1,8 +1,8 @@
-# Personal-Finance-Tracker-CLI
+# Personal Finance Tracker
 
 A command-line personal finance tracker built in Python.
 
--->> Features
+## Features
 - Add income and expense transactions
 - Real-time balance calculation
 - Filter transactions by category
@@ -11,7 +11,7 @@ A command-line personal finance tracker built in Python.
 - Persistent storage with JSON
 - Full input validation with custom exceptions
 
--->> Project Structure
+## Project Structure
 finance_tracker/
 ├── exceptions.py   — Custom exception hierarchy
 ├── models.py       — Transaction class with validation
@@ -19,13 +19,13 @@ finance_tracker/
 ├── storage.py      — JSON save and load
 └── main.py         — CLI interface
 
--->> How to run
+## How to run
 python main.py
 
--->> How to test
+## How to test
 python test_project.py
 
---->> Tech used
+## Tech used
 - Pure Python — OOP architecture
 - Custom exception hierarchy  
 - @property for computed values and validation
