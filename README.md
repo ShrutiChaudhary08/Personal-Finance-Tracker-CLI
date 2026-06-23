@@ -1,4 +1,4 @@
-# Personal Finance Tracker
+# Personal Finance Tracker-CLI
 
 A command-line personal finance tracker built in Python.
 
