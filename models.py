@@ -1,5 +1,5 @@
 from exceptions import InvalidAmountError,  InvalidCategoryError,TransactionNotFoundError, InsufficientFundsError
-# All valid categories defined once at the top.
+
 Valid_Categories = [
     "salary", "food", "rent", "transport",
     "entertainment", "health", "savings", "other"
