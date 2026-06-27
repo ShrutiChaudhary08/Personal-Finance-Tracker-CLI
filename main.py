@@ -65,6 +65,21 @@ def view_by_category(tracker: FinanceTracker) -> None:
             print(results)
     except InvalidCategoryError as e:
         print(f"Error: {e}")
+        
+
+def view_monthly_summary(tracker: FinanceTracker) -> None:
+        try:
+            year = int(input("Year (e.g. 2024): "))
+            month = int(input("Month (1-12): "))
+            summary = tracker.monthly_summary(month, year)
+            print(f"\n--- Summary for {summary['month']} ---")
+            print(f"Income      : ₹{summary['income']:.2f}")
+            print(f"Expenses    : ₹{summary['expenses']:.2f}")
+            print(f"Balance     : ₹{summary['balance']:.2f}")
+            print(f"Transactions: {summary['transaction_count']}")
+        except ValueError:
+            print("Please enter valid numbers for year and month.")
+
 
 def remove_transaction(tracker: FinanceTracker) -> None:
     try:
@@ -97,7 +112,7 @@ while True:
      elif choice == "4":
           view_by_category(tracker)
      elif choice == "5":
-          view_summary(tracker)
+          view_monthly_summary(tracker)
      elif choice == "6":
           remove_transaction(tracker)
      elif choice == "7":
