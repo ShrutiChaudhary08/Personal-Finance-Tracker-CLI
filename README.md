@@ -28,7 +28,7 @@ python main.py
 python test_project.py
 
 ## Tech used
-- Pure Python — OOP architecture
+- Pure Python —> OOP architecture 
 - Custom exception hierarchy  
 - @property for computed values and validation
 - JSON for persistent storage
