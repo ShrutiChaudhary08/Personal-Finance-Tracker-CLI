@@ -3,13 +3,15 @@
 A command-line personal finance tracker built in Python.
 
 ## Features
-- Add income and expense transactions
+- Add income and expense transactions easily
 - Real-time balance calculation
 - Filter transactions by category
 - Monthly spending summaries
 - Remove transactions by ID
 - Persistent storage with JSON
 - Full input validation with custom exceptions
+
+![Personal Finance Tracker Demo](assets/Animation.gif)
 
 ## Project Structure
 finance_tracker/

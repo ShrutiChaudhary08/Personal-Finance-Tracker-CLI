@@ -26,7 +26,8 @@ def show_menu() -> None:
     print("7. Save & Exit")
     print("=" * 40)
 
-def add_transaction(tracker: FinanceTracker, transaction_type: str) -> None:
+tracker=FinanceTracker()
+def add_transaction(tracker, transaction_type: str) -> None:
      """Handles adding either income or expense."""
      try:
         amount = float(input("Amount: ₹"))
@@ -37,6 +38,7 @@ def add_transaction(tracker: FinanceTracker, transaction_type: str) -> None:
         category = input("Category: ").strip().lower()
         date = input("Date (YYYY-MM-DD): ").strip()
         description = input("Description: ").strip()
+        
 
         tracker.add_transaction(transaction_type, amount, category, date, description)
 
@@ -87,20 +89,20 @@ while True:
      choice = input("Choose option (1-7): ").strip()
 
      if choice == "1":
-          add_transaction(FinanceTracker, "income")
+          add_transaction(tracker, "income")
      elif choice == "2":
-          add_transaction(FinanceTracker, "expense")
+          add_transaction(tracker, "expense")
      elif choice == "3":
-          view_summary(FinanceTracker)
+          view_summary(tracker)
      elif choice == "4":
-          view_by_category(FinanceTracker)
+          view_by_category(tracker)
      elif choice == "5":
-          view_summary(FinanceTracker)
+          view_summary(tracker)
      elif choice == "6":
-          remove_transaction(FinanceTracker)
+          remove_transaction(tracker)
      elif choice == "7":
           try:
-               save_data(FinanceTracker, FILEPATH)
+               save_data(tracker, FILEPATH)
                print("Data saved. Goodbye.")
           except FileProcessingError as e:
                 print(f"Could not save: {e}")
