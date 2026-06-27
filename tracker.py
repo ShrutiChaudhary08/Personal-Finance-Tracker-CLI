@@ -1,4 +1,7 @@
-# Correct
+"""Core business logic for the Personal Finance Tracker.
+Handles adding, removing, filtering, and summarizing transactions.
+"""
+
 from models import Transaction, Valid_Categories, Valid_Types  
 from exceptions import (                                          
     FinanceError,
@@ -13,7 +16,6 @@ class FinanceTracker:
     def __init__(self):
         self._transactions: list[Transaction]=[]   # A list of Transaction objects
 
-   
     @property  
     def total_income(self) -> float:
         total=0.0
@@ -22,7 +24,6 @@ class FinanceTracker:
                 total+=transaction.amount
         return total
 
-    
     @property
     def total_expenses(self) -> float:
        total=0.0
@@ -35,7 +36,6 @@ class FinanceTracker:
     def balance(self) -> float:
        return self.total_income-self.total_expenses
        
-    
     def add_transaction(self, type: str, amount: float, category: str, date: str, description: str) -> None:    # validates, creates Transaction, appends
         transaction_id = f"T{len(self._transactions) + 1:03d}"
 
@@ -53,15 +53,12 @@ class FinanceTracker:
         
         self._transactions.append(new_transaction)
         
-
-    
     def get_by_category(self, category: str) -> list[Transaction]:
         # returns filtered list
         if category.lower() not in Valid_Categories:
             raise InvalidCategoryError(category)
         return [t for t in self._transactions if t.category == category.lower()]
 
-    
     def remove_transaction(self, transaction_id: str) -> None:
         for transaction in self._transactions:
             if transaction.transaction_id==transaction_id:
@@ -69,7 +66,6 @@ class FinanceTracker:
                 return
         raise TransactionNotFoundError(transaction_id)
         
-
     def monthly_summary(self, month: int, year: int) -> dict:
         month_prefix=f"{year}-{month:02d}"
         monthly=[

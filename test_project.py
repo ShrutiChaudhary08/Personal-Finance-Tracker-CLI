@@ -1,3 +1,6 @@
+"""Unit tests for the Personal Finance Tracker.
+Validates functionality of models, tracker logic, and storage operations.
+"""
 from tracker import FinanceTracker
 from models import Transaction
 from storage import save_data, load_data
@@ -93,7 +96,6 @@ def test_to_dict_from_dict():
     assert t2.amount == 5000
     assert t2.category == "salary"
     print("✅ test_to_dict_from_dict passed")
-
 
 if __name__ == "__main__":
     print("Running all tests...\n")

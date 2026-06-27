@@ -1,3 +1,6 @@
+"""Data models for the Personal Finance Tracker.
+Includes the Transaction class with validation logic for income and expenses.
+"""
 from exceptions import InvalidAmountError,  InvalidCategoryError,TransactionNotFoundError, InsufficientFundsError
 
 Valid_Categories = [

@@ -1,9 +1,11 @@
+"""Persistence layer for the Personal Finance Tracker.
+Provides functions to save and load data using JSON files.
+"""
 import json
 from tracker import FinanceTracker
 from models import Transaction
 from exceptions import FileProcessingError
-
-        
+       
 def save_data(tracker: FinanceTracker, filepath: str) -> None:
     ls_dicts=[t.to_dict() for t in tracker._transactions]
     try:

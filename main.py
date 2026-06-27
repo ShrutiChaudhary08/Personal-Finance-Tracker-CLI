@@ -1,3 +1,6 @@
+"""Command-line interface for the Personal Finance Tracker.
+Entry point for user interaction with the application.
+"""
 from tracker import FinanceTracker
 from storage import save_data, load_data
 from exceptions import (
@@ -60,6 +63,7 @@ def view_by_category(tracker: FinanceTracker) -> None:
             print(results)
     except InvalidCategoryError as e:
         print(f"Error: {e}")
+
 def remove_transaction(tracker: FinanceTracker) -> None:
     try:
         transaction_id = input("Enter transaction ID to remove: ").strip().upper()
