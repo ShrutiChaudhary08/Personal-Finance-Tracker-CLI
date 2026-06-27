@@ -110,6 +110,5 @@ while True:
      else:
           print("Invalid choice. Enter a number from 1 to 7.")
 
-
 if __name__ == "__main__":
     main()
