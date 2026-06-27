@@ -66,21 +66,7 @@ class FinanceTracker:
                 return
         raise TransactionNotFoundError(transaction_id)
         
-    def monthly_summary(self, month: int, year: int) -> dict:
-        month_prefix=f"{year}-{month:02d}"
-        monthly=[
-            t for t in self._transactions if t.date.startswith(month_prefix)
-        ]
 
-        income=sum(t.amount for t in monthly if t.type=="income")
-        expenses=sum(t.amount for t in monthly if t.type=="expense")
-        return {
-            "month": month_prefix,
-            "income": income,
-            "expenses": expenses,
-            "balance": income - expenses,
-            "transaction_count": len(monthly)
-        }
     
     def __str__(self) -> str:
         if not self._transactions:
@@ -102,15 +88,26 @@ class FinanceTracker:
         lines.append("=" * 60)
         return "\n".join(lines)
     
-    def view_monthly_summary(tracker: FinanceTracker) -> None:
-        try:
-            year = int(input("Year (e.g. 2024): "))
-            month = int(input("Month (1-12): "))
-            summary = tracker.monthly_summary(month, year)
-            print(f"\n--- Summary for {summary['month']} ---")
-            print(f"Income      : ₹{summary['income']:.2f}")
-            print(f"Expenses    : ₹{summary['expenses']:.2f}")
-            print(f"Balance     : ₹{summary['balance']:.2f}")
-            print(f"Transactions: {summary['transaction_count']}")
-        except ValueError:
-            print("Please enter valid numbers for year and month.")
+    def monthly_summary(self, month: int, year: int) -> dict:
+        """Return income, expenses, and balance for a given month and year."""
+
+        # date is stored as "YYYY-MM-DD" string
+        # so "2024-01" is the prefix for January 2024
+        month_prefix = f"{year}-{month:02d}"
+
+        monthly = [
+            t for t in self._transactions
+            if t.date.startswith(month_prefix)
+        ]
+
+        income = sum(t.amount for t in monthly if t.type == "income")
+        expenses = sum(t.amount for t in monthly if t.type == "expense")
+
+        return {
+            "month": month_prefix,
+            "income": income,
+            "expenses": expenses,
+            "balance": income - expenses,
+            "transaction_count": len(monthly)
+        }
+   
