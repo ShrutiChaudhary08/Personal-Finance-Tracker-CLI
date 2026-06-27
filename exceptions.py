@@ -1,3 +1,4 @@
+
 class FinanceError(Exception):
     """Handles all the errors related to financial transactions in your personal finance tracker"""
     pass

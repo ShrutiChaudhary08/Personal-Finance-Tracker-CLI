@@ -5,12 +5,14 @@ import json
 from tracker import FinanceTracker
 from models import Transaction
 from exceptions import FileProcessingError
-       
-def save_data(tracker: FinanceTracker, filepath: str) -> None:
-    ls_dicts=[t.to_dict() for t in tracker._transactions]
+
+
+def save_data(tracker, filepath: str) -> None:
+    """Save all transactions to a JSON file."""
     try:
+        data = [t.to_dict() for t in tracker._transactions]
         with open(filepath, "w") as f:
-            json.dump(ls_dicts, f, indent=4)
+            json.dump(data, f, indent=4)   # indent=4 makes the file human-readable
     except OSError as e:
         raise FileProcessingError(filepath, "Could not write to file") from e
 
