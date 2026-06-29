@@ -99,7 +99,9 @@ def main() -> None:
             print(f"Loaded {len(transactions)} transactions from file.")
     except FileProcessingError as e:
         print(f"Warning: Could not load data. Starting fresh. Reason: {e.reason}")
-while True:
+    
+
+    while True:
      show_menu()
      choice = input("Choose option (1-7): ").strip()
 
